@@ -136,3 +136,6 @@ sudo systemctl status burpcollaborator
 ```
 sudo journalctl -u burpcollaborator --no-pager | grep "Received"
 ```
+```
+sudo journalctl -u burpcollaborator -f --no-pager | grep "Received"
+```
