@@ -24,3 +24,17 @@ Please see the below blog post for usage instructions:
 ### Important note:
 
 As stated in [the blog post](https://teamrot.fi/self-hosted-burp-collaborator-with-custom-domain/), be sure to firewall the ports 9443 and 9090 properly to allow connections only from your own Burp Suite computer IP address. Otherwise everyone in the internet can use your collaborator server!
+
+### Management
+```
+sudo service burpcollaborator start
+```
+```
+sudo service burpcollaborator stop
+```
+```
+sudo systemctl status burpcollaborator
+```
+```
+sudo journalctl -u burpcollaborator --no-pager | grep "Received"
+```
