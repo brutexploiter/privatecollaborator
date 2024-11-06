@@ -97,15 +97,15 @@ scp -i newpair.pem /your/own/pc/burp.jar ubuntu@YOUR_ELASTIC_IP:~/privatecollabo
 4. Run the installer script and place your domain as a command line parameter. The email is for Let’s Encrypt expiry notifications and can either be a valid one or a non-existing one:
 
 ```
-sudo ./install.sh collab.fi your@email.fi
+sudo ./install.sh domain.com admin@domain.com
 ```
 
 5. Accept any package installations that the script suggests and also enter your email address for Lets Encrypt notifications.
 6. Let’s Encrypt should now succeed creating a certificate for you. If it fails, you can try to run the install-script again couple of times. If it still fails, your domain DNS configuration from earlier steps most likely hasn’t refreshed yet. If that’s not the case, check your domain DNS configuration for typos and also check the security group inbound rules for port 53.
-7. Create a DNS entry for polling subdomain
+7. Create a DNS entry for polling subdomain (Public IPv4 address)
 ```
 sudo nano /etc/hosts
-Public IPv4 address polling.domain.com
+ip polling.domain.com
 ```
 8. You can now start the Burp collaborator service.
 
