@@ -14,7 +14,7 @@ Please see the below blog post for usage instructions:
 
 1. Clone this repository.
 2. Install Burp to /usr/local/BurpSuitePro.
-3. Run `sudo ./install.sh yourdomain.fi your@email.fi` (the email is for Let's Encrypt expiry notifications).
+3. Run `sudo ./install.sh domain.com admin@domain.com` (the email is for Let's Encrypt expiry notifications).
 4. You should now have Let's encrypt certificate for the domain and a private burp collaborator properly set up.
 5. Start the collaborator with `sudo service burpcollaborator start`.
 6. Configure your Burp Suite Professional to use it.
@@ -88,7 +88,7 @@ ssh -i newpair.pem ubuntu@YOUR_ELASTIC_IP
 ```
 git clone https://github.com/putsi/privatecollaborator && cd privatecollaborator
 ```
-3. Copy your Burp Suite Professional JAR-file to the `privatecollaborator-directory`.
+3. Copy your Burp Suite Professional JAR-file to the `privatecollaborator`.
 
 ```
 scp -i newpair.pem /your/own/pc/burp.jar ubuntu@YOUR_ELASTIC_IP:~/privatecollaborator/
@@ -102,7 +102,12 @@ sudo ./install.sh collab.fi your@email.fi
 
 5. Accept any package installations that the script suggests and also enter your email address for Lets Encrypt notifications.
 6. Let’s Encrypt should now succeed creating a certificate for you. If it fails, you can try to run the install-script again couple of times. If it still fails, your domain DNS configuration from earlier steps most likely hasn’t refreshed yet. If that’s not the case, check your domain DNS configuration for typos and also check the security group inbound rules for port 53.
-7. You can now start the Burp collaborator service.
+7. Create a DNS entry for polling subdomain
+```
+sudo nano /etc/hosts
+Public IPv4 address polling.domain.com
+```
+8. You can now start the Burp collaborator service.
 
 ```
 sudo service burpcollaborator start
